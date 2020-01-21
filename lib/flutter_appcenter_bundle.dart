@@ -53,6 +53,14 @@ class AppCenter {
     });
   }
 
+  static Future trackErrorAsync(Exception e,
+      [Map<String, String> properties]) async {
+    await _methodChannel.invokeMethod('trackError', <String, dynamic>{
+      'exception': e.toString(),
+      'properties': properties ?? <String, String>{},
+    });
+  }
+
   static Future<bool> isAnalyticsEnabledAsync() async {
     if (!_started) {
       return false;

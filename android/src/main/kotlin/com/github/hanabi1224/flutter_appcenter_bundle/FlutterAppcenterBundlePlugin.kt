@@ -86,6 +86,11 @@ class FlutterAppcenterBundlePlugin : FlutterPlugin, MethodCallHandler {
                     val properties = call.argument<Map<String, String>>("properties")
                     Analytics.trackEvent(name, properties)
                 }
+                "trackError" -> {
+                    var exception = call.argument<String>("exception")
+                    var properties = call.argument<Map<String, String>>("properties")
+                    Crashes.trackError(Exception(exception), properties)
+                }
                 "isDistributeEnabled" -> {
                     result.success(Distribute.isEnabled().get())
                     return
