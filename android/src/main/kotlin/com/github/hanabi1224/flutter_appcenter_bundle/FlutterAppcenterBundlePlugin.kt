@@ -89,7 +89,7 @@ class FlutterAppcenterBundlePlugin : FlutterPlugin, MethodCallHandler {
                 "trackError" -> {
                     var exception = call.argument<String>("exception")
                     var properties = call.argument<Map<String, String>>("properties")
-                    Crashes.trackError(Exception(exception), properties)
+                    Crashes.trackError(Exception(exception), properties, null)
                 }
                 "isDistributeEnabled" -> {
                     result.success(Distribute.isEnabled().get())
