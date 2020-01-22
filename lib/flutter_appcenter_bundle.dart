@@ -53,10 +53,10 @@ class AppCenter {
     });
   }
 
-  static Future trackErrorAsync(Exception e,
+  static Future trackErrorAsync(String error,
       [Map<String, String> properties]) async {
     await _methodChannel.invokeMethod('trackError', <String, dynamic>{
-      'exception': e.toString(),
+      'exception': error,
       'properties': properties ?? <String, String>{},
     });
   }
